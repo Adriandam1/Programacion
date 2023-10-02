@@ -19,7 +19,7 @@ public class Boletin2_3 {
         System.out.print("Euros a convertir: ");
         Scanner input = new Scanner(System.in);
         euros = input.nextFloat();
-        System.out.print("El cambio esta actualmente a: ");
+        System.out.print("El cambio esta actualmente a : ");
         cambio = input.nextFloat();
         dolares = euros * cambio;
         System.out.println(euros+" euros = "+dolares+" dolares");
