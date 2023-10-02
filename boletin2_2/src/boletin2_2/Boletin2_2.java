@@ -17,7 +17,7 @@ public class Boletin2_2 {
         // TODO code application logic here
                 float lado = 3, area;
         area = lado*lado;
-        System.out.println("Area do cuadrado = "+area);
+        System.out.println("Area do cuadrado= "+area);
     }
     
 }
