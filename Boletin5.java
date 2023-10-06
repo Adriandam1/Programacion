@@ -15,7 +15,7 @@ public class Boletin5 {
      */
     public static void main(String[] args) {
        
-        // a) Crea un obxecto, de tipo consume, utilizando o constructor sen parámetros
+        // a) Crea un obxecto, de tipo consume, utilizando o constructor sen parámetros.
         consumo obxConsume = new consumo();
         // b) Dalle a litros o valor 50 e a prezo da gasolina 1.57
         float eur = obxConsume.consumoEuros(50, 1.57f);

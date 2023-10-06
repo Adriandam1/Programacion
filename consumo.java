@@ -25,7 +25,7 @@ public class consumo {
     public consumo(float km,float litros,float pgas, int vmed){
         
     }
-    // getTempo Indica o tempo empregado en realizar a viaxe
+    // getTempo Indica o tempo empregado en realizar a viaxe.
     public float getTempo(float km, float vmed){
         float tiempo = km * vmed;
         return tiempo;
