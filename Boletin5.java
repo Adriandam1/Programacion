@@ -28,7 +28,7 @@ public class Boletin5 {
         float gas = obxConsumo.consumoMedio(200, 100);
         System.out.println("El consumo de gasolina es "+gas+" litros/km");
         
-        // e) Varia o valor dos litros consumidos do 2º obxecto.
+        // e) Varia o valor dos litros consumidos do 2º obxecto
         
         // f) Visualiza a velocidade media do 2º obxecto.
         
