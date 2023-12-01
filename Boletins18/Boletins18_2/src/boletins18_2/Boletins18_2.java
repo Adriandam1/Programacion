@@ -25,7 +25,7 @@ public class Boletins18_2 {
         
         System.out.println("Se desexa enviar mais paquetes escriba 'si'");
         repetir = sc.nextLine();
-        }while ("si".equals(repetir));
+        }while ("si".equalsIgnoreCase(repetir));
         
     }
     
