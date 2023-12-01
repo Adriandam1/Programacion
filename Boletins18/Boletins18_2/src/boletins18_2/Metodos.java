@@ -47,6 +47,8 @@ public class Metodos {
             case 5:
                 custo = 18;
                 break;
+            default:
+                System.out.println("Error seleccione destino 1-5");
         }        
         }while (zona < 1 || zona >5);
         // En este do indico el peso del paquete
