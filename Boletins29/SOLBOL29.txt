@@ -1,0 +1,238 @@
+ Ejercicio 1: Arrays Multidimensionales
+
+Para este ejercicio, primero necesitas crear un array bidimensional de números enteros y llenarlo con valores aleatorios. Luego, itera sobre este array para encontrar el valor máximo y su posición.
+
+
+import .util.Random;
+
+public class MaxValorArray {
+    public static void main(String[] args) {
+        int filas = 5;
+        int columnas = 5;
+        int[][] miArray = new int[filas][columnas];
+        Random rand = new Random();
+
+        int maxValor = Integer.MIN_VALUE;
+        int filaMax = -1, columnaMax = -1;
+
+        // Llenar array y encontrar el valor máximo y su posición
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                miArray[i][j] = rand.nextInt(100); // Valores aleatorios entre 0 y 99
+                System.out.print(miArray[i][j] + " ");
+                
+                if (miArray[i][j] > maxValor) {
+                    maxValor = miArray[i][j];
+                    filaMax = i;
+                    columnaMax = j;
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println("El valor máximo es " + maxValor + " y se encuentra en la fila " + filaMax + " y columna " + columnaMax + ".");
+    }
+}
+
+
+ Ejercicio 2: Uso de Genéricos
+
+La clase `Caja<T>` permite almacenar un objeto de cualquier tipo. Implementa métodos para obtener (get) y establecer (set) el valor del objeto almacenado.
+
+
+public class Caja<T> {
+    private T objeto;
+
+    public void set(T objeto) {
+        this.objeto = objeto;
+    }
+
+    public T get() {
+        return objeto;
+    }
+
+    public static void main(String[] args) {
+        Caja<Integer> cajaEntero = new Caja<>();
+        cajaEntero.set(123);
+
+        Caja<String> cajaCadena = new Caja<>();
+        cajaCadena.set("Hola Mundo");
+
+        System.out.println("Valor en cajaEntero: " + cajaEntero.get());
+        System.out.println("Valor en cajaCadena: " + cajaCadena.get());
+    }
+}
+
+
+ Ejercicio 3: Clases Abstractas e Interfaces
+
+ 3.1 Clases Abstractas
+
+
+public abstract class Figura {
+    public abstract void dibujar();
+}
+
+public class Circulo extends Figura {
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un círculo.");
+    }
+}
+
+public class Cuadrado extends Figura {
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un cuadrado.");
+    }
+}
+
+
+ 3.2 Interfaces
+
+
+public interface Vehiculo {
+    void arrancar();
+    void detener();
+    void acelerar();
+}
+
+public class Coche implements Vehiculo {
+    @Override
+    public void arrancar() { System.out.println("Coche arrancando."); }
+    @Override
+    public void detener() { System.out.println("Coche deteniéndose."); }
+    @Override
+    public void acelerar() { System.out.println("Coche acelerando."); }
+}
+
+public class Motocicleta implements Vehiculo {
+    @Override
+    public void arrancar() { System.out.println("Motocicleta arrancando."); }
+    @Override
+    public void detener() { System.out.println("Motocicleta deteniéndose."); }
+    @Override
+    public void acelerar() { System.out.println("Motocicleta acelerando."); }
+}
+
+
+
+ Ejercicio 4: Manejo de Excepciones
+
+Este ejercicio te pide que escribas un programa que realice una división de dos números introducidos por el usuario, manejando adecuadamente las excepciones para división por cero y entradas no válidas.
+
+
+import .util.InputMismatchException;
+import .util.Scanner;
+
+public class DivisionSegura {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Introduce el numerador: ");
+            int numerador = scanner.nextInt();
+            System.out.print("Introduce el denominador: ");
+            int denominador = scanner.nextInt();
+            
+            int resultado = numerador / denominador;
+            System.out.println("El resultado es: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: No se puede dividir por cero.");
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Por favor, introduce un número válido.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+
+ Ejercicio 5: Serialización
+
+Para este ejercicio, primero definimos la clase `Empleado` y luego escribimos un programa que serializa y deserializa una lista de empleados.
+
+
+import .io.*;
+import .util.ArrayList;
+
+class Empleado implements Serializable {
+    private String nombre;
+    private int id;
+    private String departamento;
+    
+    // Constructor, getters y setters aquí
+}
+
+public class SerializacionEmpleado {
+    public static void main(String[] args) {
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        // Añadir empleados a la lista
+        
+        // Serialización
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("empleados.ser"))) {
+            oos.writeObject(empleados);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Deserialización
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("empleados.ser"))) {
+            empleados = (ArrayList<Empleado>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+ Ejercicio 6: Foreach y Collections
+
+ 6.1 Iterar sobre un ArrayList
+
+
+import .util.ArrayList;
+
+public class IteracionForeach {
+    public static void main(String[] args) {
+        ArrayList<String> cadenas = new ArrayList<>();
+        cadenas.add("Uno");
+        cadenas.add("Dos");
+        cadenas.add("Tres");
+        
+        for (String cadena : cadenas) {
+            System.out.println(cadena);
+        }
+    }
+}
+
+
+ 6.2 Uso de HashSet y Iterator
+
+
+import .util.HashSet;
+import .util.Iterator;
+
+public class UsoHashSet {
+    public static void main(String[] args) {
+        HashSet<Integer> numeros = new HashSet<>();
+        numeros.add(1);
+        numeros.add(2);
+        numeros.add(3);
+        
+        // Eliminar el número 2
+        Iterator<Integer> iterator = numeros.iterator();
+        while (iterator.hasNext()) {
+            Integer numero = iterator.next();
+            if (numero == 2) {
+                iterator.remove();
+            }
+        }
+        
+        // Mostrar el HashSet después de eliminar
+        for (Integer numero : numeros) {
+            System.out.println(numero);
+        }
+    }
+}
+
+
